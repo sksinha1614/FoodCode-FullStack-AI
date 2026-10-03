@@ -108,7 +108,7 @@ public class FoodServiceImpl implements FoodService {
     @Override
     public boolean deleteFile(String filename) {
         DeleteObjectRequest deleteObjectRequest = DeleteObjectRequest.builder()
-                .bucket("food-images")
+                .bucket("foodcode")
                 .key(filename)
                 .build();
         s3Client.deleteObject(deleteObjectRequest);
@@ -126,8 +126,6 @@ public class FoodServiceImpl implements FoodService {
         }
 
     }
-
-
 
 
     private FoodEntity convertToEntity(FoodRequest request) {
