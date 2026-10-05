@@ -1,0 +1,180 @@
+
+
+.add-food {
+    --ember: #E1552A;
+    --ember-dark: #B7401D;
+    --cream: #FFF8F1;
+    --paper: #FFFFFF;
+    --sand: #EAE0D3;
+    --charcoal: #2B241F;
+    --charcoal-soft: #7A6F63;
+
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--cream);
+    min-height: 100%;
+    padding: 32px 24px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.add-food__card {
+    width: 100%;
+    max-width: 480px;
+    background: var(--paper);
+    border: 1px solid var(--sand);
+    border-radius: 14px;
+    padding: 32px;
+}
+
+.add-food__head h2 {
+    font-family: 'Poppins', 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 26px;
+    color: var(--charcoal);
+    margin: 0 0 4px;
+}
+
+.add-food__head p {
+    color: var(--charcoal-soft);
+    font-size: 14px;
+    margin: 0 0 24px;
+}
+
+/* Upload circle */
+.add-food__upload {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    margin-bottom: 28px;
+    width: fit-content;
+}
+
+.add-food__upload-icon,
+.add-food__upload img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.add-food__upload-icon {
+    border: 1.5px dashed var(--ember);
+    color: var(--ember);
+    background: #FDEEE7;
+}
+
+.add-food__upload img {
+    object-fit: cover;
+    border: 1.5px solid var(--sand);
+}
+
+.add-food__upload-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ember-dark);
+}
+
+/* Fields */
+.add-food__field {
+    margin-bottom: 20px;
+}
+
+.add-food__field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 6px;
+}
+
+.add-food__field input[type="text"],
+.add-food__field input[type="number"],
+.add-food__field select,
+.add-food__field textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--sand);
+    border-radius: 8px;
+    padding: 11px 14px;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--charcoal);
+    background: var(--cream);
+    transition: border-color 0.15s ease;
+}
+
+.add-food__field textarea {
+    resize: vertical;
+    min-height: 96px;
+}
+
+.add-food__field input:focus,
+.add-food__field select:focus,
+.add-food__field textarea:focus {
+    outline: none;
+    border-color: var(--ember);
+}
+
+.add-food__field input::placeholder,
+.add-food__field textarea::placeholder {
+    color: #B4A99B;
+}
+
+.add-food__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.add-food__price {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--sand);
+    border-radius: 8px;
+    background: var(--cream);
+    padding-left: 12px;
+}
+
+.add-food__price span {
+    color: var(--charcoal-soft);
+    font-size: 14px;
+}
+
+.add-food__price input {
+    border: none !important;
+    background: transparent !important;
+    padding-left: 6px !important;
+}
+
+.add-food__price:focus-within {
+    border-color: var(--ember);
+}
+
+/* Save button */
+.add-food__save {
+    margin-top: 8px;
+    width: 100%;
+    background: var(--ember);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 13px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.add-food__save:hover {
+    background: var(--ember-dark);
+}
+
+@media (max-width: 520px) {
+    .add-food__row {
+        grid-template-columns: 1fr;
+    }
+}

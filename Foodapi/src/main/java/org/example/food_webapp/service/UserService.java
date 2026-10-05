@@ -7,6 +7,6 @@ public interface UserService {
 
 
     public UserResponse register(UserRequest userRequest);
-    public String findByUserId();
+    public Long findByUserId();
 
 }

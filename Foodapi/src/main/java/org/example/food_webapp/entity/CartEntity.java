@@ -27,5 +27,11 @@ public class CartEntity {
     )
     @MapKeyColumn(name = "item_name")
     @Column(name = "quantity")
-    private Map<String,Integer> items=new HashMap<>();
+    private Map<Long,Integer> items=new HashMap<>();
+
+    public CartEntity(Long userId, Map<Long, Integer> items) {
+        this.userId = userId;
+        this.items = items;
+    }
 }
+

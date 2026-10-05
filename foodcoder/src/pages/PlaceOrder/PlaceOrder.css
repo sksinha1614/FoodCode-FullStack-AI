@@ -1,0 +1,164 @@
+.po-page {
+  color: #17171a;
+  padding-bottom: 3rem;
+}
+
+.po-loading {
+  padding: 4rem 0;
+  text-align: center;
+  color: #8a8a90;
+}
+
+/* Header */
+.po-header {
+  padding-top: 0.5rem !important;
+  padding-bottom: 1rem !important;
+}
+
+.po-logo {
+  border-radius: 16px;
+}
+
+.po-title {
+  font-weight: 700;
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.po-subtitle {
+  color: #8a8a90;
+  margin-bottom: 0;
+}
+
+/* Cards */
+.po-summary-card,
+.po-form-card {
+  border: 1px solid #ececee;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(17, 17, 20, 0.04);
+}
+
+.po-summary-card {
+  position: sticky;
+  top: 90px;
+}
+
+/* Order summary */
+.po-summary-heading {
+  font-weight: 700;
+}
+
+.po-badge {
+  background-color: #ff5a36;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  min-width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6px;
+}
+
+.po-item-list {
+  margin: 0;
+  padding: 0;
+}
+
+.po-item {
+  padding: 0.65rem 0;
+  border-bottom: 1px solid #f2f2f4;
+}
+
+.po-item-name {
+  font-weight: 600;
+}
+
+.po-item-qty {
+  color: #8a8a90;
+}
+
+.po-item-price {
+  font-weight: 600;
+  color: #4a4a4f;
+}
+
+.po-row {
+  padding: 0.4rem 0;
+  color: #6f6f76;
+  font-size: 0.95rem;
+}
+
+.po-row-value {
+  color: #17171a;
+}
+
+.po-total {
+  font-size: 1.05rem;
+  padding-top: 0.25rem;
+}
+
+/* Billing form */
+.po-form-heading {
+  font-weight: 700;
+}
+
+.po-label {
+  font-weight: 500;
+  color: #4a4a4f;
+  margin-bottom: 0.35rem;
+}
+
+.po-input {
+  border: 1px solid #e2e2e5;
+  border-radius: 10px;
+  padding: 0.55rem 0.85rem;
+}
+
+.po-input:focus {
+  border-color: #ff5a36;
+  box-shadow: 0 0 0 0.2rem rgba(255, 90, 54, 0.15);
+}
+
+.po-input-group .po-input {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.po-input-addon {
+  border: 1px solid #e2e2e5;
+  border-right: none;
+  border-radius: 10px 0 0 10px;
+  background-color: #fafafa;
+  color: #8a8a90;
+}
+
+/* Submit button */
+.btn.po-submit-btn {
+  background-color: #ff5a36;
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  font-weight: 700;
+  padding: 0.75rem 1rem;
+  transition: transform 0.15s ease, background-color 0.2s ease;
+}
+
+.btn.po-submit-btn:hover:not(:disabled) {
+  background-color: #f04a26;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.btn.po-submit-btn:disabled {
+  background-color: #f2c9bd;
+  cursor: not-allowed;
+}
+
+@media (max-width: 767px) {
+  .po-summary-card {
+    position: static;
+  }
+}

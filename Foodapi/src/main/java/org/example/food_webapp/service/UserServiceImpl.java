@@ -7,6 +7,7 @@ import org.example.food_webapp.dto.UserRequest;
 import org.example.food_webapp.dto.UserResponse;
 import org.example.food_webapp.entity.UserEntity;
 import org.example.food_webapp.repo.UserRepo;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,7 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepo userRepo;
     private final PasswordEncoder passwordEncoder;
+    private AuthenticationFacade authenticationFacade;
 
     @Override
     public UserResponse register(UserRequest userRequest) {
@@ -50,7 +52,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String findByUserId() {
-        return "";
+    public Long findByUserId() {
+        String loggedInUserEmail = authenticationFacade.getAuthentication().getName();
+        UserEntity loggedInUser = userRepo.findByEmail(loggedInUserEmail).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        return loggedInUser.getId();
     }
 }

@@ -1,0 +1,133 @@
+
+
+.list-food {
+    --ember: #E1552A;
+    --ember-dark: #B7401D;
+    --cream: #FFF8F1;
+    --paper: #FFFFFF;
+    --sand: #EAE0D3;
+    --charcoal: #2B241F;
+    --charcoal-soft: #7A6F63;
+
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--cream);
+    min-height: 100%;
+    padding: 32px 24px;
+}
+
+.list-food__card {
+    background: var(--paper);
+    border: 1px solid var(--sand);
+    border-radius: 14px;
+    padding: 28px 28px 8px;
+}
+
+.list-food__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.list-food__head h2 {
+    font-family: 'Poppins', 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--charcoal);
+    margin: 0;
+}
+
+.list-food__head p {
+    font-size: 13px;
+    color: var(--charcoal-soft);
+    margin: 0;
+}
+
+.list-food__empty {
+    padding: 40px 0;
+    text-align: center;
+    color: var(--charcoal-soft);
+    font-size: 14px;
+}
+
+.list-food__table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.list-food__table th {
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: none;
+    color: var(--charcoal-soft);
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--sand);
+}
+
+.list-food__table td {
+    padding: 12px;
+    border-bottom: 1px solid var(--sand);
+    vertical-align: middle;
+    font-size: 14px;
+    color: var(--charcoal);
+}
+
+.list-food__table tr:last-child td {
+    border-bottom: none;
+}
+
+.list-food__thumb {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 1px solid var(--sand);
+    display: block;
+}
+
+.list-food__name {
+    font-weight: 500;
+}
+
+.list-food__tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #FDEEE7;
+    color: var(--ember-dark);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.list-food__price {
+    font-weight: 500;
+    color: var(--charcoal);
+}
+
+.list-food__remove {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #F3C9C0;
+    background: var(--paper);
+    color: #D33A2C;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+}
+
+.list-food__remove:hover {
+    background: #FCEAE7;
+    border-color: #D33A2C;
+    color: #B22A1E;
+}
+
+@media (max-width: 640px) {
+    .list-food__table th:nth-child(3),
+    .list-food__table td:nth-child(3) {
+        display: none;
+    }
+}

@@ -1,0 +1,205 @@
+
+
+.fd-page {
+  --void: #17130f;
+  --panel: #221c16;
+  --cream: #f4ecdd;
+  --muted: #b3a692;
+  --saffron: #e2a63b;
+  --paprika: #b8452f;
+  min-height: 100vh;
+  background: radial-gradient(120% 140% at 15% 0%, #ded5ca 0%, var(--void) 55%);
+  color: var(--cream);
+  font-family: 'Manrope', sans-serif;
+  padding: 56px 24px 80px;
+  box-sizing: border-box;
+}
+
+.fd-shell {
+  max-width: 1040px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 56px;
+  align-items: center;
+  animation: fd-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fd-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fd-media {
+  position: relative;
+}
+
+.fd-img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 28px 120px 28px 28px;
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.65);
+  display: block;
+}
+
+.fd-price-tag {
+  position: absolute;
+  bottom: -22px;
+  left: -22px;
+  background: var(--paprika);
+  color: var(--cream);
+  border-radius: 50%;
+  width: 88px;
+  height: 88px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 14px 30px -8px rgba(184, 69, 47, 0.55);
+  font-family: 'Fraunces', serif;
+  border: 3px solid var(--void);
+}
+
+.fd-price-currency {
+  font-size: 12px;
+  opacity: 0.85;
+  margin-top: 2px;
+}
+
+.fd-price-amount {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.fd-content {
+  padding-left: 8px;
+}
+
+.fd-tag {
+  display: inline-block;
+  font-size: 13px;
+  color: var(--saffron);
+  border: 1px solid rgba(226, 166, 59, 0.4);
+  padding: 5px 14px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+}
+
+.fd-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 44px;
+  line-height: 1.08;
+  margin: 0 0 18px;
+  letter-spacing: -0.01em;
+}
+
+.fd-description {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--muted);
+  max-width: 46ch;
+  margin: 0 0 28px;
+}
+
+.fd-divider {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(226, 166, 59, 0.35), transparent);
+  margin-bottom: 28px;
+}
+
+.fd-add-btn {
+  min-width: 220px;
+  background: var(--saffron);
+  color: #201808;
+  border: none;
+  padding: 16px 28px;
+  border-radius: 999px;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+  box-shadow: 0 16px 30px -12px rgba(226, 166, 59, 0.5);
+}
+
+.fd-add-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 34px -12px rgba(226, 166, 59, 0.6);
+}
+
+.fd-add-btn:active {
+  transform: translateY(0);
+}
+
+.fd-add-btn-done {
+  background: #4f7a4a;
+  color: var(--cream);
+  box-shadow: 0 16px 30px -12px rgba(79, 122, 74, 0.5);
+}
+
+/* Loading skeleton */
+
+.fd-shell-loading {
+  animation: none;
+}
+
+.fd-skeleton-media {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: 28px 120px 28px 28px;
+  background: linear-gradient(100deg, var(--panel) 30%, #2b241b 50%, var(--panel) 70%);
+  background-size: 200% 100%;
+  animation: fd-shimmer 1.6s ease-in-out infinite;
+}
+
+.fd-skeleton-line {
+  height: 16px;
+  border-radius: 8px;
+  background: linear-gradient(100deg, var(--panel) 30%, #2b241b 50%, var(--panel) 70%);
+  background-size: 200% 100%;
+  animation: fd-shimmer 1.6s ease-in-out infinite;
+  margin-bottom: 16px;
+}
+
+.fd-skeleton-tag {
+  width: 90px;
+  height: 24px;
+  border-radius: 999px;
+}
+
+.fd-skeleton-title {
+  width: 70%;
+  height: 40px;
+  margin-bottom: 24px;
+}
+
+@keyframes fd-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@media (max-width: 800px) {
+  .fd-shell {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .fd-content {
+    padding-left: 0;
+  }
+  .fd-title {
+    font-size: 34px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fd-shell {
+    animation: none;
+  }
+  .fd-skeleton-media,
+  .fd-skeleton-line {
+    animation: none;
+  }
+}

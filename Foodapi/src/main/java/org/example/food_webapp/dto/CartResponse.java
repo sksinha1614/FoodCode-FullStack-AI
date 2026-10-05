@@ -14,9 +14,9 @@ import java.util.Map;
 @Builder
 public class CartResponse {
 
-    private Long Id;
+    private Long id;
     private Long userId;
-    private Map<String,Integer> items=new HashMap<>();
+    private Map<Long,Integer> items=new HashMap<>();
 }
 
 
