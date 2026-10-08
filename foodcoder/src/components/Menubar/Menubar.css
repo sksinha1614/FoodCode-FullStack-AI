@@ -1,8 +1,8 @@
 .navbar.bg-body-tertiary {
   background-color: #ffffff !important;
   border-bottom: 1px solid #eeeeee;
-  padding-top: 0.6rem;
-  padding-bottom: 0.6rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -70,19 +70,72 @@
   transform: translateY(-1px);
 }
 
+.nav-actions {
+  padding-right: 0.25rem;
+}
+
+.nav-cart {
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-cart img {
+  display: block;
+}
+
+.nav-avatar-btn {
+  display: inline-flex;
+  align-items: center;
+  box-shadow: none !important;
+}
+
+.nav-avatar-btn::after {
+  display: none;
+}
+
+.nav-avatar {
+  object-fit: cover;
+  border: 2px solid #ececee;
+  transition: border-color 0.2s ease;
+}
+
+.nav-avatar-btn:hover .nav-avatar {
+  border-color: #ff5a36;
+}
+
+.nav-dropdown-menu {
+  margin-top: 0.75rem;
+  border: 1px solid #ececee;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(17, 17, 20, 0.08);
+  padding: 0.4rem;
+  min-width: 160px;
+}
+
+.nav-dropdown-menu .dropdown-item {
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  color: #17171a;
+}
+
+.nav-dropdown-menu .dropdown-item:hover {
+  background-color: #fff1ec;
+  color: #ff5a36;
+}
+
 .cart-badge {
   position: absolute;
-  top: 30px;
-  right: 30px;
-  min-width: 18px;
+  top: 25px;
+  right: 24px;
+  min-width: 20px;
   height: 20px;
-  padding: 0 4px;
-  border-radius: 999px;
+  padding: 0 5px;
+  border-radius: 500px;
   background-color: #ff5a36;
   color: #ffffff;
   font-size: 0.7rem;
   font-weight: 700;
-  line-height: 18px;
+  line-height: 20px;
   text-align: center;
-  
 }

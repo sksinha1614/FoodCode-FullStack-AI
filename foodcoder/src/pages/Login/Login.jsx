@@ -12,7 +12,7 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [rememberMe, setRememberMe] = useState(false);
-    const {setToken} = useContext(StoreContext);
+    const {setToken,loadCartData} = useContext(StoreContext);
 
     const navigate = useNavigate();
 
@@ -26,6 +26,7 @@ const Login = () => {
                 console.log(response.data);
                 setToken(token);
                 localStorage.setItem("token", token);
+                loadCartData(token);
                 toast.success('Login successful!');
                 navigate('/');
             }
