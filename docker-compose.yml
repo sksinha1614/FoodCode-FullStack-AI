@@ -1,0 +1,23 @@
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: foodcode-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: food_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - foodcode-postgres-data:/var/lib/postgresql/data
+      - ./Foodapi/docker/postgres/init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d food_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  foodcode-postgres-data:

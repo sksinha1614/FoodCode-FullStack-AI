@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.example.food_webapp.dto.UserRequest;
 import org.example.food_webapp.dto.UserResponse;
 import org.example.food_webapp.entity.UserEntity;
+import org.example.food_webapp.exception.EmailAlreadyRegisteredException;
 import org.example.food_webapp.repo.UserRepo;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -25,7 +26,7 @@ public class UserServiceImpl implements UserService {
     public UserResponse register(UserRequest userRequest) {
 
         if (userRepo.findByEmail(userRequest.getEmail()).isPresent()) {
-            throw new RuntimeException("Email already registered");
+            throw new EmailAlreadyRegisteredException(userRequest.getEmail());
         }
 
         UserEntity newUser = convertToEntity(userRequest);

@@ -60,9 +60,10 @@ const Register = () => {
             }
         } catch (error) {
             console.error('Error during registration:', error);
-            toast.error(
-                'An error occurred during registration. Please try again.'
-            );
+            const message = typeof error.response?.data === 'string'
+                ? error.response.data
+                : error.response?.data?.message;
+            toast.error(message || 'Unable to reach the server. Please try again.');
         }
     };
 

@@ -12,6 +12,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
+import io.jsonwebtoken.JwtException;
 
 import java.io.IOException;
 
@@ -42,7 +43,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
 
         final String authToken = authorizationHeader.substring(7);
-        String email = jwtUtil.extractUsername(authToken);
+        String email;
+        try {
+            email = jwtUtil.extractUsername(authToken);
+        } catch (JwtException | IllegalArgumentException exception) {
+            SecurityContextHolder.clearContext();
+            filterChain.doFilter(request, response);
+            return;
+        }
 
         if (email != null &&
                 SecurityContextHolder.getContext().getAuthentication() == null) {

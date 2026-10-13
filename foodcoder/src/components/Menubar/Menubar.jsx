@@ -8,7 +8,7 @@ const Menubar = () => {
   const [active, setActive] = useState("home");
   const navigate = useNavigate();
 
-  const { quantities, token,setQuantities } = useContext(StoreContext);
+  const { quantities = {}, token,setQuantities } = useContext(StoreContext);
   const cartCount = Object.values(quantities).filter((qty) => qty > 0).length;
 
   const logout = () => {
@@ -59,7 +59,6 @@ const Menubar = () => {
                 Home
               </Link>
             </li>
-
             <li className="nav-item">
               <Link
                 className={

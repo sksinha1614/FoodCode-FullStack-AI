@@ -12,7 +12,9 @@ import org.example.food_webapp.repo.OrderRepo;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Map;
@@ -36,11 +38,13 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderResponse createOrderWithPayment(OrderRequest request) throws RazorpayException {
+        if (razorpayKey.isBlank() || razorpaySecret.isBlank()) {
+            throw new ResponseStatusException(
+                    HttpStatus.SERVICE_UNAVAILABLE,
+                    "Razorpay is not configured. Set RAZORPAY_KEY and RAZORPAY_SECRET before placing an order.");
+        }
 
         OrderEntity newOrder = convertToEntity(request);
-        newOrder = orderRepository.save(newOrder);
-
-
         RazorpayClient razorpayClient =
                 new RazorpayClient(razorpayKey.trim(), razorpaySecret.trim());
         JSONObject orderRequest = new JSONObject();
@@ -48,7 +52,16 @@ public class OrderServiceImpl implements OrderService {
         orderRequest.put("currency", "INR");
         orderRequest.put("payment_capture", 1);
 
-        Order razorpayOrder = razorpayClient.orders.create(orderRequest);
+        final Order razorpayOrder;
+        try {
+            razorpayOrder = razorpayClient.orders.create(orderRequest);
+        } catch (RazorpayException exception) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_GATEWAY,
+                    "Razorpay rejected the order request. Check that the matching test-mode key and secret are configured.",
+                    exception);
+        }
+        newOrder = orderRepository.save(newOrder);
         newOrder.setRazorpayOrderId(razorpayOrder.get("id"));
         Long loggedInUserId = userService.findByUserId();
         newOrder.setUserId(loggedInUserId);

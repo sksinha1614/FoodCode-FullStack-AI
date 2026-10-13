@@ -69,18 +69,25 @@ const PlaceOrder = () => {
       ) {
         initiateRazorpayPayment(response.data);
       } else {
-        toast.error("Unable to place order. Please try again");
+        toast.error("Razorpay did not return a valid payment order.");
       }
     } catch (error) {
       console.error(error);
-      toast.error("Unable to place order. Please try again");
+      const responseData = error.response?.data;
+      const message = typeof responseData === "string"
+        ? responseData
+        : responseData?.detail
+          || responseData?.message
+          || responseData?.error
+          || responseData?.title;
+      toast.error(message || "Unable to place order. Please try again.");
     }
   };
 
   const initiateRazorpayPayment = (order) => {
     const options = {
       key: order.razorpayKey,
-      amount: Math.round(Number(order.amount)),
+      amount: Math.round(Number(order.amount) * 100),
       currency: "INR",
       name: "FoodCoder",
       description: "Food order payment",

@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import org.example.food_webapp.dto.AuthenticationRequest;
 import org.example.food_webapp.dto.AuthenticationResponse;
 import org.example.food_webapp.dto.UserRequest;
+import org.example.food_webapp.exception.EmailAlreadyRegisteredException;
 import org.example.food_webapp.service.AppUserDetailsService;
 import org.example.food_webapp.service.UserServiceImpl;
 import org.example.food_webapp.util.JwtUtil;
@@ -47,8 +48,12 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody UserRequest userRequest){
-        userService.register(userRequest);
-        return ResponseEntity.status(201).body("User Registered");
+        try {
+            userService.register(userRequest);
+            return ResponseEntity.status(201).body("User Registered");
+        } catch (EmailAlreadyRegisteredException exception) {
+            return ResponseEntity.status(409).body(exception.getMessage());
+        }
 
     }
 

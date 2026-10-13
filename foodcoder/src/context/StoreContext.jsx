@@ -34,8 +34,12 @@ export const StoreContextProvider = (props) => {
 
     const loadCartData = async (token) => {
 
-        const items = await getCartData(token);
-        setQuantities(items);
+            const items = await getCartData(token);
+        setQuantities(items || {});
+            if (!items && token === localStorage.getItem("token")) {
+                localStorage.removeItem("token");
+                setToken("");
+            }
         
             
     };

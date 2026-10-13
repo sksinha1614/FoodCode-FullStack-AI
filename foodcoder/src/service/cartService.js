@@ -24,6 +24,6 @@ export const getCartData = async (token) => {
         return response.data.items;
     } catch (error) {
         console.error('Error while fetching cart data', error);
-        
+        return null;
     }
 }

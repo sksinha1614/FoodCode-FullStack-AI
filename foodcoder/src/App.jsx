@@ -10,6 +10,7 @@ import PlaceOrder from './pages/PlaceOrder/PlaceOrder';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import MyOrders from './pages/MyOrders/MyOrders';
+import AskAI from './pages/AskAI/AskAI';
 import { ToastContainer } from 'react-toastify';
 import { StoreContext } from './context/StoreContext';
 
@@ -32,6 +33,7 @@ const App = () => {
         <Route path="/register" element={token ? <Home /> : <Register />} />
         <Route path="/myorders" element={token ? <MyOrders /> : <Login />} />
       </Routes>
+      <AskAI />
     </div>
   );
 };
